@@ -44,9 +44,13 @@
     .post-list-wrapper {
         .post-list {
             list-style: none;
+            padding: 0;
             .post-item {
                 padding: 1.5em 0;
                 @include border-1px(gray, 0, 0.5)
+                &:first-child {
+                    padding-top: 0;
+                }
             }
         }
     }

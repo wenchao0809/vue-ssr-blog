@@ -17,7 +17,8 @@
     "nuxt": "^1.0.0-rc3",
     "sass-loader": "^6.0.6",
     "source-map-support": "^0.4.15",
-    "vue-awesome": "^2.3.1"
+    "vue-awesome": "^2.3.1",
+    "mysql": "^2.14.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
