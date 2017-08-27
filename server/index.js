@@ -34,5 +34,5 @@ app.use(ctx => {
   })
 })
 
-app.listen(8080, host)
+app.listen(8080)
 console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console

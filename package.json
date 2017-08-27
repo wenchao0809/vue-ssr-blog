@@ -14,8 +14,11 @@
   "dependencies": {
     "cross-env": "^5.0.1",
     "koa": "^2.3.0",
+    "mysql": "^2.14.1",
+    "mysql2": "^1.4.1",
     "nuxt": "^1.0.0-rc3",
     "sass-loader": "^6.0.6",
+    "sequelize": "^4.7.5",
     "source-map-support": "^0.4.15",
     "vue-awesome": "^2.3.1"
   },
