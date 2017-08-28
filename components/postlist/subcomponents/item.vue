@@ -1,8 +1,8 @@
 <template>
     <div class="post-item-wrapper">
         <time class="publish-time">{{ article.publishTime }}</time>
-        <nuxt-link @click="slectArticle" :to="{path: `/articles/${article.title}`}">
-            <h2 class="publish-title">{{ article.title }}</h2>
+        <nuxt-link  :to="{path: `/articles/${article.title}`}">
+            <h2 @click="slectArticle" class="publish-title">{{ article.title }}</h2>
         </nuxt-link>
         <p class="publish-desc">{{ article.desc }}</p>
     </div>
@@ -16,8 +16,9 @@
     },
     components: {},
     methods: {
-      selecArticle () {
-        this.$store.commit('')
+      slectArticle () {
+        console.log(this.$store)
+        this.$store.commit('articles/UPDATECURRENTSELECTEDARTICLE', this.article)
       }
     }
   }

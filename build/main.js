@@ -110,8 +110,8 @@ module.exports = {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 
 
 var _this = this;
@@ -124,8 +124,8 @@ var article = __webpack_require__(7).article;
 module.exports = function (app) {
   var router = new Router();
   router.get('/api/articles', function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
-      return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
+      return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
@@ -168,8 +168,8 @@ module.exports = require("nuxt");
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by estding on 17/8/27.
@@ -179,10 +179,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 
 
+/**
+ * 查询最近发表的文章
+ * @param limit 最多获取多少条
+ * @returns {Promise.<*>}
+ */
 var articleList = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(limit) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(limit) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -214,9 +219,9 @@ var articleList = function () {
 }();
 
 var addArtile = function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(article) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(article) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -255,9 +260,9 @@ var addArtile = function () {
 
 
 var create = function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3() {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3() {
     var log;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
@@ -397,7 +402,7 @@ module.exports = {
   db: {
     host: 'localhost',
     user: 'root',
-    password: '123456',
+    password: 'ding912823',
     database: 'estding'
   }
 };

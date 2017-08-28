@@ -2,16 +2,18 @@ import axios from 'axios'
 import * as types from '../util/types'
 
 export const state = () => {
-  articles: [],
-  currentSelectedArticle: {}
+  return {
+    articles: [],
+    currentSelectedArticle: {}
+  }
 }
 
 export const mutations = {
-  UPDATEARTICLES (state, articles) {
+  [types.UPDATEARTICLES] (state, articles) {
     // console.log(articles)
     state.articles = articles
   },
-  UPDATECURRENTSELECTEDARTICLE (state, article) {
+  [types.UPDATECURRENTSELECTEDARTICLE] (state, article) {
     state.currentSelectedArticle = article
   }
 }

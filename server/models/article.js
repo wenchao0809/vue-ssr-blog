@@ -26,6 +26,11 @@ const article = defineModel('article', {
   comment: 'article model save all article'
 })
 
+/**
+ * 查询最近发表的文章
+ * @param limit 最多获取多少条
+ * @returns {Promise.<*>}
+ */
 async function articleList (limit) {
   try {
     let result = await article.findAndCountAll({})
