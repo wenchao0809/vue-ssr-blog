@@ -1,26 +1,8 @@
 <template>
     <div class="post-list-wrapper">
         <ul class="post-list">
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
-            </li>
-            <li class="post-item">
-                <post-item></post-item>
+            <li v-for="article in articles">
+                <post-item :article="article"></post-item>
             </li>
         </ul>
     </div>
@@ -31,7 +13,12 @@
 
   export default {
     name: 'PostList',
-    props: {},
+    props: {
+      articles: {
+        type: Array,
+        default: () => []
+      }
+    },
     components: {
       PostItem
     }

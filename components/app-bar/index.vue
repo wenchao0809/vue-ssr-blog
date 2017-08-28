@@ -89,7 +89,7 @@
           .social {
             a {
               display: inline-block;
-              margin-right: 10px;
+              margin-right: 20px;
               .social-icon {
                 fill: gray;
               }

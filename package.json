@@ -12,12 +12,16 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "cross-env": "^5.0.1",
+    "highlight.js": "^9.12.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^3.2.0",
+    "koa-router": "7",
+    "marked": "^0.3.6",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.1",
-    "nuxt": "^1.0.0-rc3",
+    "nuxt": "^1.0.0-rc6",
     "sass-loader": "^6.0.6",
     "sequelize": "^4.7.5",
     "source-map-support": "^0.4.15",

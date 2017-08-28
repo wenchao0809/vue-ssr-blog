@@ -12,6 +12,31 @@ let dbOrm = new Sequelize(config.database, config.user, config.password, {
   }
 })
 
+function defineModel (name, attributes) {
+  var attrs = {}
+  for (let key in attributes) {
+    let value = attributes[key]
+    if (typeof value === 'object' && value['type']) {
+      value.allowNull = value.allowNull || false
+      attrs[key] = value
+    } else {
+      attrs[key] = {
+        type: value,
+        allowNull: false
+      }
+    }
+  }
+  attrs.id = {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  }
+  attrs.version = {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
+  return dbOrm.define(name, attrs)
+}
 dbOrm
     .authenticate()
     .then(() => {
@@ -20,4 +45,5 @@ dbOrm
     .catch(err => {
       console.error('Unable to connect to the database:', err)
     })
-module.exports.dbOrm = dbOrm
+
+module.exports.defineModel = defineModel

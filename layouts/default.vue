@@ -1,21 +1,18 @@
 <template>
   <div>
-    <app-bar />
-    <nuxt/>
+
   </div>
 </template>
 
 <script>
-  import AppBar from '../components/app-bar'
 
   export default {
     components: {
-      AppBar
     }
   }
 </script>
 
-<style>
+<style scoped>
 .container
 {
   margin: 0;

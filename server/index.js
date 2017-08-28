@@ -8,6 +8,7 @@ const port = process.env.PORT || 3000
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
+require('./router/index')(app)
 
 // Instantiate nuxt.js
 const nuxt = new Nuxt(config)
@@ -34,5 +35,5 @@ app.use(ctx => {
   })
 })
 
-app.listen(8080)
+app.listen(80)
 console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
