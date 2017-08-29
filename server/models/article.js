@@ -3,8 +3,7 @@
  */
 
 'use strict'
-const Sequelize = require('sequelize')
-const defineModel = require('../util/DBUtil').defineModel
+const {defineModel, Sequelize} = require('../util/DBUtil').db
 
 const article = defineModel('article', {
   publishTime: {
@@ -35,7 +34,6 @@ const article = defineModel('article', {
 async function articleList (limit) {
   try {
     let result = await article.findAndCountAll({where: {status: 'publish'}, limit: limit})
-    console.log(result.rows)
     return result.rows
   } catch (e) {
     console.log(e)
