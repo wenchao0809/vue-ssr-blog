@@ -27,8 +27,7 @@
     }
   }
   .content-container-wrapper {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding:2em 1.5em 0 1.5em;
     .content {
       margin: 0 auto;
     }

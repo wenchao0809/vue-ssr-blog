@@ -11,7 +11,12 @@
   import {mapState} from 'vuex'
 
   export default {
-    async fetch ({store}) {
+    /**
+     * 填充store
+     * @param store
+     * @returns {Promise.<void>}
+     */
+    async fetch ({isServer, store}) {
       await store.dispatch('articles/getArticles')
     },
     layout: 'blog',

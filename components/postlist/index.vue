@@ -25,16 +25,16 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import "../../assets/css/base";
 
     .post-list-wrapper {
         .post-list {
             list-style: none;
             padding: 0;
-            .post-item {
+            li {
                 padding: 1.5em 0;
-                @include border-1px(gray, 0, 0.5)
+                @include border-1px($LightGray, 0, 1)
                 &:first-child {
                     padding-top: 0;
                 }

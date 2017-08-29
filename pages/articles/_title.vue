@@ -4,41 +4,49 @@
       <article class="article">
         <header class="content-header">
           <h1>{{ currentSelectedArticle.title }}</h1>
-          <time>{{ currentSelectedArticle.publishTime }}</time>
+          <time>{{ date }}</time>
         </header>
-        <div class="article-content">
-          {{ currentSelectedArticle.markdown }}
+        <div v-html="articlesHtml" class="article-content">
         </div>
-        <footer>
-
-        </footer>
       </article>
     </div>
   </div>
 </template>
 
 <script>
-  import {mapState} from 'vuex'
-
+  import {mapState, mapGetters} from 'vuex'
+  import '../../assets/css/tomorrow.css'
+  import '../../assets/css/estding-md-theme.scss'
+  import {formateDate} from '../../util/common'
 
   export default {
     data () {
       return {
       }
     },
-    layout: 'blog',
-    validate ({ params }) {
-      this.article = params.title
-      return params
+    async fetch ({isServer, store, params}) {
+      if (!isServer) {
+        return
+      }
+      await store.dispatch('articles/getArticleByTitle', params.title)
     },
+    layout: 'blog',
     computed: {
-      ...mapState('articles', ['currentSelectedArticle'])
+      ...mapState('articles', ['currentSelectedArticle']),
+      ...mapGetters('articles', ['articlesHtml']),
+      date: function () {
+        return formateDate(this.currentSelectedArticle.publishTime)
+      }
+    },
+    methods: {
+      formateDate
     }
   }
 </script>
 
 <style scoped lang="scss">
   @import "../../assets/css/base";
+
 
   .content-container-wrapper {
     .content {
@@ -47,9 +55,27 @@
           margin-bottom: 1.75em;
           padding: 0  0 1.75em;
           h1 {
-            font-size: 2em;
+            margin: 0;
+            font-size: 1.75em;
           }
-          @include border-1px
+          time {
+            display: block;
+            margin: 1em 0 0;
+            color: gray;
+          }
+          @include border-1px($LightGray, 0, 1)
+        }
+        .article-content {
+          position: relative;
+        }
+      }
+      @media (min-width: 48em) {
+        .article {
+          .content-header {
+            h1 {
+              font-size: 2em;
+            }
+          }
         }
       }
     }

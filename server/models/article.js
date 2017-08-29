@@ -8,19 +8,20 @@ const defineModel = require('../util/DBUtil').defineModel
 
 const article = defineModel('article', {
   publishTime: {
-    type: Sequelize.DATE,
+    type: Sequelize.BIGINT
   },
   title: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    unique: true
   },
   desc: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT
   },
   markdown: {
-    type: Sequelize.TEXT,
+    type: Sequelize.TEXT
   },
   status: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   }
 }, {
   comment: 'article model save all article'
@@ -33,8 +34,9 @@ const article = defineModel('article', {
  */
 async function articleList (limit) {
   try {
-    let result = await article.findAndCountAll({})
-    return result
+    let result = await article.findAndCountAll({where: {status: 'publish'}, limit: limit})
+    console.log(result.rows)
+    return result.rows
   } catch (e) {
     console.log(e)
   }
@@ -44,6 +46,16 @@ async function addArtile (article) {
   try {
     let result = await article.create(article)
     return result
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+async function findArticleByTitle (title) {
+  console.log(title)
+  try {
+    let result = await article.find({where: {title: title}})
+    return result.dataValues
   } catch (e) {
     console.log(e)
   }
@@ -63,10 +75,12 @@ async function create () {
   }
 }
 
-article.sync({force: false})
+article.sync()
   .catch((error) => console.log(error))
 
 module.exports = {
   articleList,
-  addArtile
+  addArtile,
+  findArticleByTitle,
+  create
 }

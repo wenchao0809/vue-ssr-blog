@@ -1,0 +1,49 @@
+@import "./base";
+
+.article-content h1:before, .article-content h2:before,
+.article-content h3:before, .article-content h4:before,
+.article-content h5:before, .article-content h6:before {
+  content: "#";
+  color: #42b983;
+  position: absolute;
+  left: -0.7em;
+  top: -4px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.article-content blockquote {
+  margin: 2em 0;
+  border-left: 4px solid $Base;
+  ul {
+    padding-left: 2em;
+  }
+}
+
+// code
+.article-content pre {
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font: 1em SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.article-content p code {
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.2em 0px;
+  margin: 0px;
+  border-radius: 3px;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace
+}
+
+.article-content p code:before, .article-content p code:after {
+    letter-spacing: -0.2em;
+    content: " ";
+}
+
+.article-content img {
+  max-width: 40em;
+  margin-bottom: 2em;
+}

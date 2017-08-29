@@ -31,11 +31,19 @@ function defineModel (name, attributes) {
     primaryKey: true,
     autoIncrement: true
   }
+  attrs.createAt = {
+    type: Sequelize.BIGINT
+  }
+  attrs.updateAt = {
+    type: Sequelize.BIGINT
+  }
   attrs.version = {
     type: Sequelize.INTEGER,
     allowNull: false
   }
-  return dbOrm.define(name, attrs)
+  return dbOrm.define(name, attrs, {
+    timestamps: false
+  })
 }
 dbOrm
     .authenticate()
