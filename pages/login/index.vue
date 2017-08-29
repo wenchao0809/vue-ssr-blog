@@ -29,14 +29,20 @@
     .login-wrapper {
         flex: 1;
         width: 100vw;
-        display: flex;
-        justify-content: center;
+        max-width: 400px;
+        margin: 0 auto;
         .login {
-
-            border: 10px;
+            text-align: center;
+            box-shadow: 0 0px 2px #ccc;;
+            border-radius: 10px;
             background: #fafafa;
+            div {
+            }
             .from {
-                padding: 1em;
+
+            }
+            .login-button {
+
             }
         }
     }
