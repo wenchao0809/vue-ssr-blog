@@ -9,7 +9,7 @@
                     <input v-model="userName" type="text" placeholder="用户名">
                 </div>
                 <div class="user-password">
-                    <input v-model="pwd" type="text" placeholder="密码">
+                    <input v-model="pwd" type="password" placeholder="密码">
                 </div>
                 <div class="login-button">
                     <button @click="login" :disabled="userName === '' || pwd === '' ">登录</button>
@@ -39,6 +39,7 @@
           userName: this.userName,
           pwd: this.pwd
         }).then((response) => {
+          console.log('eeee')
           this.$router.replace('/admin')
         })
       }

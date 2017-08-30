@@ -1,19 +1,20 @@
+import {cookieParse} from '../util/cookieUtil'
 
 export default function ({ isClient, isServer, route, req, res, redirect }) {
-
   if (isServer) {
-    console.log(req.headers)
-    let cookies = req.cookies
+    let cookie = cookieParse(req.headers.cookie)
     let path = req.originalUrl
-    console.log(cookies)
-    if (path.indexOf('admin')) {
+    if (path.indexOf('admin') > 0 && !cookie.token) {
       redirect('/login')
     }
   }
-  //在客户端判读是否需要登陆
-  // if (isClient) {
-  //   if (route.path.indexOf('admin') > 0 && !isLogin()) {
-  //     redirect('login')
-  //   }
-  // }
+  // 在客户端判读是否需要登陆
+  if (isClient) {
+    let cookie = cookieParse(document.cookie)
+    console.log(cookie)
+    if (route.path.indexOf('admin') > 0 && !cookie.token) {
+      console.log('fjjf')
+      redirect('login')
+    }
+  }
 }

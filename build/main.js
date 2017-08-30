@@ -65,14 +65,14 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(15);
+module.exports = __webpack_require__(16);
 
 
 /***/ },
@@ -87,14 +87,14 @@ module.exports = require("koa-router");
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 
 
 var auth = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(authUser) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(authUser) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -177,7 +177,7 @@ module.exports = {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var Sequelize = __webpack_require__(16);
+var Sequelize = __webpack_require__(17);
 var config = __webpack_require__(4).db;
 
 var dbOrm = new Sequelize(config.database, config.user, config.password, {
@@ -244,8 +244,8 @@ module.exports = {
   db: {
     host: 'localhost',
     user: 'root',
-    password: '123456',
-    // passwrod: 'ding912823'
+    // password: '123456',
+    password: 'ding912823',
     database: 'estding'
   }
 };
@@ -318,8 +318,8 @@ module.exports = require("nuxt");
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by estding on 17/8/27.
@@ -335,9 +335,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns {Promise.<*>}
  */
 var articleList = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(limit) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(limit) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -369,9 +369,9 @@ var articleList = function () {
 }();
 
 var addArtile = function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(article) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(article) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -403,9 +403,9 @@ var addArtile = function () {
 }();
 
 var findArticleByTitle = function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(title) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(title) {
     var result;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
@@ -445,9 +445,9 @@ var findArticleByTitle = function () {
 
 
 var create = function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4() {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4() {
     var log;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
@@ -537,8 +537,8 @@ module.exports = {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 
 
 var _this = this;
@@ -551,8 +551,8 @@ var article = __webpack_require__(11).article;
 var articleRouter = new Router();
 // home
 articleRouter.get('/', function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx) {
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -574,8 +574,8 @@ articleRouter.get('/', function () {
     return _ref.apply(this, arguments);
   };
 }()).get('/title', function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(ctx) {
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(ctx) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -606,8 +606,8 @@ module.exports = articleRouter;
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
 
 
 var _this = this;
@@ -616,15 +616,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var Router = __webpack_require__(1);
 var user = __webpack_require__(2);
-var jwt = __webpack_require__(14);
+var jwt = __webpack_require__(15);
 var jwtSerect = __webpack_require__(4).jwtSecret;
-var crypto = __webpack_require__(18);
+var crypto = __webpack_require__(14);
 
 var userRouter = new Router();
 userRouter.post('/', function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx) {
     var pwd, authUser, token;
-    return __WEBPACK_IMPORTED_MODULE_0_D_my_project_my_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
@@ -639,10 +639,8 @@ userRouter.post('/', function () {
           case 3:
             authUser = _context.sent;
 
-            console.log(authUser);
-
             if (!authUser) {
-              _context.next = 12;
+              _context.next = 10;
               break;
             }
 
@@ -653,15 +651,14 @@ userRouter.post('/', function () {
             ctx.cookies.set('token', token, {
               maxAge: 60 * 60 * 24 * 7
             });
-            console.log(token);
             ctx.body = '认证成功';
-            _context.next = 13;
+            _context.next = 11;
             break;
 
-          case 12:
+          case 10:
             throw new Error('用户名密码不正确');
 
-          case 13:
+          case 11:
           case 'end':
             return _context.stop();
         }
@@ -680,22 +677,28 @@ module.exports = userRouter;
 /* 14 */
 /***/ function(module, exports) {
 
-module.exports = require("jsonwebtoken");
+module.exports = require("crypto");
 
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
-module.exports = require("regenerator-runtime");
+module.exports = require("jsonwebtoken");
 
 /***/ },
 /* 16 */
 /***/ function(module, exports) {
 
-module.exports = require("sequelize");
+module.exports = require("regenerator-runtime");
 
 /***/ },
 /* 17 */
+/***/ function(module, exports) {
+
+module.exports = require("sequelize");
+
+/***/ },
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -715,7 +718,7 @@ var port = process.env.PORT || 3000;
 var config = __webpack_require__(5);
 config.dev = !(app.env === 'production');
 
-// 使用ctx.body解析中间件
+// 使用ctx.body解析中间件,要放在router中间件之前
 var bodyParser = __webpack_require__(8);
 app.use(bodyParser());
 
@@ -749,12 +752,6 @@ app.use(function (ctx) {
 
 app.listen(80);
 console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-module.exports = require("crypto");
 
 /***/ }
 /******/ ]);

@@ -13,7 +13,6 @@ userRouter
       userName: ctx.request.body.userName,
       pwd
     })
-    console.log(authUser)
     if (authUser) {
       let token = jwt.sign({
         uid: authUser.id
@@ -21,7 +20,6 @@ userRouter
       ctx.cookies.set('token', token, {
         maxAge: 60 * 60 * 24 * 7
       })
-      console.log(token)
       ctx.body = '认证成功'
     } else {
       throw (new Error('用户名密码不正确'))
