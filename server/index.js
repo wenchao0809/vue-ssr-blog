@@ -8,6 +8,12 @@ const port = process.env.PORT || 3000
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
+
+// 使用ctx.body解析中间件,要放在router中间件之前
+var bodyParser = require('koa-bodyparser')
+app.use(bodyParser())
+
+//router
 require('./router/index')(app)
 
 // Instantiate nuxt.js
@@ -21,6 +27,7 @@ if (config.dev) {
     process.exit(1)
   })
 }
+
 
 app.use(ctx => {
   ctx.status = 200 // koa defaults to 404 when it sees that status is unset

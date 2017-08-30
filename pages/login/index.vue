@@ -6,13 +6,13 @@
             </div>
             <div class="form">
                 <div class="user-name">
-                    <input type="text" placeholder="用户名">
+                    <input v-model="userName" type="text" placeholder="用户名">
                 </div>
                 <div class="user-password">
-                    <input type="text" placeholder="密码">
+                    <input v-model="pwd" type="text" placeholder="密码">
                 </div>
                 <div class="login-button">
-                    <button>登录</button>
+                    <button @click="login" :disabled="userName === '' || pwd === '' ">登录</button>
                 </div>
             </div>
         </div>
@@ -20,8 +20,29 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
-    layout: 'admin'
+    data () {
+      return {
+        userName: '',
+        pwd: ''
+      }
+    },
+    layout: 'admin',
+    computed: {
+
+    },
+    methods: {
+      login () {
+        axios.post('/api/login', {
+          userName: this.userName,
+          pwd: this.pwd
+        }).then((response) => {
+          this.$router.replace('/admin')
+        })
+      }
+    }
   }
 </script>
 
