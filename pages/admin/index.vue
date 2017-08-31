@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    layout: 'blog'
+    layout: 'admin'
   }
 </script>
 

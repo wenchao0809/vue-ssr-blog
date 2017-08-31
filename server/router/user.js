@@ -18,7 +18,10 @@ userRouter
         uid: authUser.id
       }, jwtSerect, { expiresIn: `${24 * 7}h` })
       ctx.cookies.set('token', token, {
-        maxAge: 60 * 60 * 24 * 7
+        // 有效期7天
+        maxAge: Date.now() / 1000 + 60 * 60 * 24 * 7,
+        // 不设置此属性客户端无法通过document.cookie获取到
+        httpOnly: false
       })
       ctx.body = '认证成功'
     } else {
