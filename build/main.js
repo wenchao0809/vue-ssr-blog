@@ -207,30 +207,32 @@ var classList = function () {
 
 var createClass = function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(type) {
+    var results;
     return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
+            type.version = 1;
+            _context2.prev = 1;
+            _context2.next = 4;
             return Classify.create(type);
 
-          case 3:
-            _context2.next = 8;
-            break;
+          case 4:
+            results = _context2.sent;
+            return _context2.abrupt('return', results);
 
-          case 5:
-            _context2.prev = 5;
-            _context2.t0 = _context2['catch'](0);
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2['catch'](1);
 
             console.log(_context2.t0);
 
-          case 8:
+          case 11:
           case 'end':
             return _context2.stop();
         }
       }
-    }, _callee2, this, [[0, 5]]);
+    }, _callee2, this, [[1, 8]]);
   }));
 
   return function createClass(_x) {
@@ -917,6 +919,33 @@ classifyRouter.get('/', function () {
 
   return function (_x) {
     return _ref.apply(this, arguments);
+  };
+}()).post('/add', function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(ctx) {
+    var results;
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return classify.createClass(ctx.request.body);
+
+          case 2:
+            results = _context2.sent;
+
+            console.log(results);
+            ctx.body = 'ok';
+
+          case 5:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, _this);
+  }));
+
+  return function (_x2) {
+    return _ref2.apply(this, arguments);
   };
 }());
 module.exports = classifyRouter;

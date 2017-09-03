@@ -19,8 +19,10 @@ async function classList () {
 }
 
 async function createClass (type) {
+  type.version = 1
   try {
-    await Classify.create(type)
+    let results = await Classify.create(type)
+    return results
   } catch (e) {
     console.log(e)
   }

@@ -64,8 +64,14 @@
         this.$store.commit('classify/UPDATECURRENTSELECTCLASS', item.className)
         await this.$store.dispatch('classify/getArticlesByClassName', this.currentSelectClass)
       },
-      submitEditClass () {
-
+      async submitEditClass () {
+        try {
+          await axios.post('/api/classify/add', {className: this.className})
+          await this.$store.dispatch('classify/getClassifies')
+          this.showAddClass = !this.showAddClass
+        } catch (e) {
+          console.log(e)
+        }
       }
     },
     computed: {
@@ -154,6 +160,7 @@
                 }
                 .class-wrap {
                     height: 70%;
+                    overflow: auto;
                     .class-list {
                         padding: 0;
                         margin: 20px 0;
