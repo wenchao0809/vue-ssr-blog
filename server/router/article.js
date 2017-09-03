@@ -10,5 +10,7 @@ articleRouter
   .get('/title', async(ctx) => {
     ctx.body = await article.findArticleByTitle(ctx.query.title)
   })
-
+  .get('/className', async (ctx) => {
+    ctx.body = await article.getArticlesByClassify(ctx.query.className)
+  })
 module.exports = articleRouter

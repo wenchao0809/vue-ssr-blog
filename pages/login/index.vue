@@ -35,7 +35,7 @@
     },
     methods: {
       login () {
-        axios.post('/api/login', {
+        axios.post('/api/user/login', {
           userName: this.userName,
           pwd: this.pwd
         }).then((response) => {

@@ -1,5 +1,8 @@
-const {defineModel, Sequelize} = require('../util/DBUtil').db
+/**
+ * Created by estding on 17/8/27.
+ */
 
+const {defineModel, Sequelize} = require('../util/DBUtil').db
 
 const user = defineModel('user', {
   name: Sequelize.STRING,

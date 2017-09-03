@@ -2,7 +2,6 @@ import {cookieParse} from '../util/cookieUtil'
 
 export default function ({ isClient, isServer, route, req, res, redirect }) {
   if (isServer) {
-    console.log(req.headers)
     let cookie = cookieParse(req.headers.cookie)
     if (cookie) {
       let path = req.originalUrl
@@ -14,7 +13,6 @@ export default function ({ isClient, isServer, route, req, res, redirect }) {
   // 在客户端判读是否需要登陆
   if (isClient) {
     let cookie = cookieParse(document.cookie)
-    console.log(cookie)
     if (route.path.indexOf('admin') > 0 && !cookie.token) {
       redirect('login')
     }

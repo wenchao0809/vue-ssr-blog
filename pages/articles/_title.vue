@@ -9,6 +9,9 @@
         <div v-html="articlesHtml" class="article-content">
         </div>
       </article>
+      <div class="copyright">
+        <p>©  anything - 2017 estding</p>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +70,14 @@
         }
         .article-content {
           position: relative;
+        }
+      }
+      .copyright {
+        margin: 3em 0;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        p {
+          color: $Gray;
         }
       }
       @media (min-width: 48em) {

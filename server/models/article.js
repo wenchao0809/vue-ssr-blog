@@ -21,6 +21,9 @@ const article = defineModel('article', {
   },
   status: {
     type: Sequelize.STRING
+  },
+  className: {
+    type: Sequelize.STRING
   }
 }, {
   comment: 'article model save all article'
@@ -73,6 +76,19 @@ async function create () {
   }
 }
 
+async function getArticlesByClassify (className) {
+  try {
+    let results = await article.findAndCount({
+      where: {
+        className: className
+      }
+    })
+    return results.rows
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 article.sync()
   .catch((error) => console.log(error))
 
@@ -80,5 +96,6 @@ module.exports = {
   articleList,
   addArtile,
   findArticleByTitle,
-  create
+  create,
+  getArticlesByClassify
 }

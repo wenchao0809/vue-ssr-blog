@@ -13,7 +13,10 @@ config.dev = !(app.env === 'production')
 var bodyParser = require('koa-bodyparser')
 app.use(bodyParser())
 
-//router
+// jwtAuth
+const jwtAuth = require('./middleware/jwtAuth')
+app.use(jwtAuth)
+// router
 require('./router/index')(app)
 
 // Instantiate nuxt.js
@@ -27,7 +30,6 @@ if (config.dev) {
     process.exit(1)
   })
 }
-
 
 app.use(ctx => {
   ctx.status = 200 // koa defaults to 404 when it sees that status is unset

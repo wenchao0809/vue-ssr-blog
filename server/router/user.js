@@ -6,7 +6,7 @@ let crypto = require('crypto')
 
 let userRouter = new Router()
 userRouter
-  .post('/', async (ctx) => {
+  .post('/login', async (ctx) => {
     // 数据库验证
     let pwd = crypto.createHash('sha1').update(ctx.request.body.pwd).digest('hex')
     let authUser = await user.auth({
@@ -26,6 +26,19 @@ userRouter
       ctx.body = '认证成功'
     } else {
       throw (new Error('用户名密码不正确'))
+    }
+  })
+  .post('/logout', async (ctx) => {
+    let token = ctx.cookies.get('token')
+    if (!token) {
+      ctx.body = '用户未登录'
+    } else {
+      console.log(token)
+      ctx.cookies.set('token', '', {
+        maxAge: 0,
+        httpOnly: false
+      })
+      ctx.body = '退出登录成功'
     }
   })
 
