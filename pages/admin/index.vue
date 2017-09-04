@@ -66,9 +66,14 @@
       },
       async submitEditClass () {
         try {
-          await axios.post('/api/classify/add', {className: this.className})
-          await this.$store.dispatch('classify/getClassifies')
-          this.showAddClass = !this.showAddClass
+          try {
+            console.log(await axios.post('/api/classify/add', {className: this.className}))
+            console.log('jjjjjj')
+            await this.$store.dispatch('classify/getClassifies')
+            this.showAddClass = !this.showAddClass
+          } catch (e) {
+            console.log(e)
+          }
         } catch (e) {
           console.log(e)
         }

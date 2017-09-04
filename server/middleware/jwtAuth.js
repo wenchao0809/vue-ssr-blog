@@ -8,13 +8,15 @@ module.exports = async function (ctx, next) {
     return next()
   } else {
     let token = ctx.cookies.get('token')
+    console.log(token)
     if (!token) {
       ctx.res.status = '401'
     }
     try {
       let decodeToken = jwt.verify(token, jwtSecrect)
+      console.log(decodeToken)
       if (decodeToken) {
-        next()
+        return next()
       }
     } catch (e) {
       ctx.res.status = '401'

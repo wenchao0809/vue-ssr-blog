@@ -6,11 +6,20 @@ let classifyRouter = new Router()
 // classify
 classifyRouter
   .get('/', async (ctx) => {
-    ctx.body = await classify.classList()
+    try {
+      ctx.body = await classify.classList()
+    } catch (e) {
+      console.log(e)
+    }
   })
   .post('/add', async (ctx) => {
-    let results =  await classify.createClass(ctx.request.body)
-    console.log(results)
-    ctx.body = 'ok'
+    try {
+      let results = await classify.createClass(ctx.request.body)
+      if (results) {
+        ctx.body = 'ok'
+      }
+    } catch (e) {
+      console.log(e)
+    }
   })
 module.exports = classifyRouter

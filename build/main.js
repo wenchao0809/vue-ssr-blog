@@ -165,137 +165,14 @@ module.exports.db = {
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
-
-
-var classList = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var results;
-    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return Classify.findAndCount();
-
-          case 3:
-            results = _context.sent;
-            return _context.abrupt('return', results.rows);
-
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context['catch'](0);
-
-            console.log(_context.t0);
-
-          case 10:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this, [[0, 7]]);
-  }));
-
-  return function classList() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var createClass = function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(type) {
-    var results;
-    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            type.version = 1;
-            _context2.prev = 1;
-            _context2.next = 4;
-            return Classify.create(type);
-
-          case 4:
-            results = _context2.sent;
-            return _context2.abrupt('return', results);
-
-          case 8:
-            _context2.prev = 8;
-            _context2.t0 = _context2['catch'](1);
-
-            console.log(_context2.t0);
-
-          case 11:
-          case 'end':
-            return _context2.stop();
-        }
-      }
-    }, _callee2, this, [[1, 8]]);
-  }));
-
-  return function createClass(_x) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-var updateClass = function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(type) {
-    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.prev = 0;
-            _context3.next = 3;
-            return Classify.update(type, {
-              where: {
-                id: type.id
-              }
-            });
-
-          case 3:
-            _context3.next = 8;
-            break;
-
-          case 5:
-            _context3.prev = 5;
-            _context3.t0 = _context3['catch'](0);
-
-            console.log(_context3.t0);
-
-          case 8:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, this, [[0, 5]]);
-  }));
-
-  return function updateClass(_x2) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-var _require$db = __webpack_require__(3).db,
-    defineModel = _require$db.defineModel,
-    Sequelize = _require$db.Sequelize;
-
-var Classify = defineModel('classify', {
-  className: {
-    type: Sequelize.STRING,
-    unique: true
-  }
-});
-
-Classify.sync();
+var article = __webpack_require__(13);
+var user = __webpack_require__(5);
+var classify = __webpack_require__(14);
 
 module.exports = {
-  createClass: createClass,
-  updateClass: updateClass,
-  classList: classList
+  article: article,
+  user: user,
+  classify: classify
 };
 
 /***/ },
@@ -459,25 +336,38 @@ module.exports = function () {
           case 5:
             token = ctx.cookies.get('token');
 
+            console.log(token);
             if (!token) {
               ctx.res.status = '401';
             }
-            try {
-              decodeToken = jwt.verify(token, jwtSecrect);
+            _context.prev = 8;
+            decodeToken = jwt.verify(token, jwtSecrect);
 
-              if (decodeToken) {
-                next();
-              }
-            } catch (e) {
-              ctx.res.status = '401';
+            console.log(decodeToken);
+
+            if (!decodeToken) {
+              _context.next = 13;
+              break;
             }
 
-          case 8:
+            return _context.abrupt('return', next());
+
+          case 13:
+            _context.next = 18;
+            break;
+
+          case 15:
+            _context.prev = 15;
+            _context.t0 = _context['catch'](8);
+
+            ctx.res.status = '401';
+
+          case 18:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this);
+    }, _callee, this, [[8, 15]]);
   }));
 
   return function (_x, _x2) {
@@ -776,14 +666,137 @@ module.exports = {
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-var article = __webpack_require__(13);
-var user = __webpack_require__(5);
-var classify = __webpack_require__(4);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator__);
+
+
+var classList = function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
+    var results;
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return Classify.findAndCount();
+
+          case 3:
+            results = _context.sent;
+            return _context.abrupt('return', results.rows);
+
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context['catch'](0);
+
+            console.log(_context.t0);
+
+          case 10:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this, [[0, 7]]);
+  }));
+
+  return function classList() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var createClass = function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(type) {
+    var results;
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            type.version = 1;
+            _context2.prev = 1;
+            _context2.next = 4;
+            return Classify.create(type);
+
+          case 4:
+            results = _context2.sent;
+            return _context2.abrupt('return', results);
+
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2['catch'](1);
+
+            console.log(_context2.t0);
+
+          case 11:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, this, [[1, 8]]);
+  }));
+
+  return function createClass(_x) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var updateClass = function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(type) {
+    return __WEBPACK_IMPORTED_MODULE_0__Volumes_Develop_Developer_nodejs_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return Classify.update(type, {
+              where: {
+                id: type.id
+              }
+            });
+
+          case 3:
+            _context3.next = 8;
+            break;
+
+          case 5:
+            _context3.prev = 5;
+            _context3.t0 = _context3['catch'](0);
+
+            console.log(_context3.t0);
+
+          case 8:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this, [[0, 5]]);
+  }));
+
+  return function updateClass(_x2) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var _require$db = __webpack_require__(3).db,
+    defineModel = _require$db.defineModel,
+    Sequelize = _require$db.Sequelize;
+
+var Classify = defineModel('classify', {
+  className: {
+    type: Sequelize.STRING,
+    unique: true
+  }
+});
+
+Classify.sync();
 
 module.exports = {
-  article: article,
-  user: user,
-  classify: classify
+  createClass: createClass,
+  updateClass: updateClass,
+  classList: classList
 };
 
 /***/ },
@@ -801,7 +814,7 @@ var _this = this;
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var Router = __webpack_require__(2);
-var article = __webpack_require__(14).article;
+var article = __webpack_require__(4).article;
 
 var articleRouter = new Router();
 // home
@@ -892,7 +905,7 @@ var _this = this;
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var Router = __webpack_require__(2);
-var classify = __webpack_require__(14).classify;
+var classify = __webpack_require__(4).classify;
 
 var classifyRouter = new Router();
 
@@ -903,18 +916,27 @@ classifyRouter.get('/', function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return classify.classList();
 
-          case 2:
-            ctx.body = _context.sent;
-
           case 3:
+            ctx.body = _context.sent;
+            _context.next = 9;
+            break;
+
+          case 6:
+            _context.prev = 6;
+            _context.t0 = _context['catch'](0);
+
+            console.log(_context.t0);
+
+          case 9:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, _this);
+    }, _callee, _this, [[0, 6]]);
   }));
 
   return function (_x) {
@@ -927,21 +949,31 @@ classifyRouter.get('/', function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
+            _context2.prev = 0;
+            _context2.next = 3;
             return classify.createClass(ctx.request.body);
 
-          case 2:
+          case 3:
             results = _context2.sent;
 
-            console.log(results);
-            ctx.body = 'ok';
+            if (results) {
+              ctx.body = 'ok';
+            }
+            _context2.next = 10;
+            break;
 
-          case 5:
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2['catch'](0);
+
+            console.log(_context2.t0);
+
+          case 10:
           case 'end':
             return _context2.stop();
         }
       }
-    }, _callee2, _this);
+    }, _callee2, _this, [[0, 7]]);
   }));
 
   return function (_x2) {
