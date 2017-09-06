@@ -1,5 +1,6 @@
 <template>
     <div class="admin-wrapper">
+        <div>fjdfjj</div>
         <nuxt/>
     </div>
 </template>

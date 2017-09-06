@@ -11,14 +11,21 @@ export const state = () => {
 }
 
 export const mutations = {
+  // 更新所有分类名
   [types.UPDATECLASSIFIES] (state, classifies) {
     state.classifies = classifies
   },
+  // 更新当前选择分类
   [types.UPDATECURRENTSELECTCLASS] (state, className) {
     state.currentSelectClass = className
   },
+  // 更新当前选择分类下面的所有文章
   [types.UPDATECURRENTSELECTCLASSARTICLES] (state, articles) {
     state.currentSelectClassArticles = articles
+  },
+  // 更新当前选择的文章
+  [types.UPDATECURRENTSELECTEDARTICLE] (state, article) {
+    state.currentSelectArtilce = article
   }
 }
 
@@ -39,6 +46,8 @@ export const actions = {
       console.log(className)
       let res = await axios.get(`/api/articles/className/?className=${encodeURIComponent(className)}`)
       commit(types.UPDATECURRENTSELECTCLASSARTICLES, res.data)
+      console.log(res.data[0])
+      commit(types.UPDATECURRENTSELECTEDARTICLE, res.data[0])      
     } catch (e) {
       console.log(e)
     }

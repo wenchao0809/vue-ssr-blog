@@ -32,18 +32,21 @@
                 </div>
                 <div class="article-list">
                     <ul class="list">
-                        <li class="item" v-for="item in currentSelectClassArticles">{{ item.title }}</li>
+                        <li @click="selectArticle(item)" :class="{itemActive: item.title === currentSelectArtilce.title}" class="item" v-for="item in currentSelectClassArticles">{{ item.title }}</li>
                     </ul>
                 </div>
             </div>
-            <div class="right">right</div>
+            <div class="right-wrap">
+                <edit-panel :article="currentSelectArtilce"></edit-panel>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
   import axios from 'axios'
-  import {mapState, mapGetters} from 'vuex'
+  import {mapState} from 'vuex'
+  import EditPanel from '../../components/admin-comp/edit.vue'
 
   export default {
     data () {
@@ -53,6 +56,9 @@
       }
     },
     layout: 'admin',
+    components: {
+      EditPanel
+    },
     methods: {
       logout () {
         axios.post('/api/user/logout')
@@ -64,11 +70,13 @@
         this.$store.commit('classify/UPDATECURRENTSELECTCLASS', item.className)
         await this.$store.dispatch('classify/getArticlesByClassName', this.currentSelectClass)
       },
+      selectArticle (item) {
+          this.$store.commit('classify/UPDATECURRENTSELECTEDARTICLE', item)
+      },
       async submitEditClass () {
         try {
           try {
             console.log(await axios.post('/api/classify/add', {className: this.className}))
-            console.log('jjjjjj')
             await this.$store.dispatch('classify/getClassifies')
             this.showAddClass = !this.showAddClass
           } catch (e) {
@@ -80,9 +88,9 @@
       }
     },
     computed: {
-      ...mapState('classify', ['classifies', 'currentSelectClassArticles', 'currentSelectClass']),
+      ...mapState('classify', ['classifies', 'currentSelectClassArticles', 'currentSelectClass', 'currentSelectArtilce']),
     },
-    async mounted() {
+    async mounted () {
       await this.$store.dispatch('classify/getClassifies')
       await this.$store.dispatch('classify/getArticlesByClassName', this.currentSelectClass)
     }
@@ -202,9 +210,8 @@
                 flex: 25%;
                 border-right: 1px solid gray;
                 text-align: center;
-                padding: 10px;
                 .new-article {
-                    padding: 10px;
+                    padding: 20px;
                     svg {
                         margin-right: 10px;
                     }
@@ -225,11 +232,14 @@
                                 background: $LightGray;
                             }
                         }
-
+                        .itemActive {
+                            border-left: 4px solid $Base;
+                            background: $LightGray;
+                        }
                     }
                 }
             }
-            .right {
+            .right-wrap {
                 flex: 1 60%;
             }
         }
