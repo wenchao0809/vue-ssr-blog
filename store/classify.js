@@ -6,7 +6,8 @@ export const state = () => {
     classifies: [],
     currentSelectClass: '',
     currentSelectClassArticles: [],
-    currentSelectArtilce: {}
+    currentSelectArtilce: {},
+    isNewArticle: false
   }
 }
 
@@ -26,6 +27,19 @@ export const mutations = {
   // 更新当前选择的文章
   [types.UPDATECURRENTSELECTEDARTICLE] (state, article) {
     state.currentSelectArtilce = article
+    if (article) {
+      if (article.status === 'publish') {
+        state.isNewArticle = false
+      } else {
+        state.isNewArticle = true
+      }
+    } else {
+      // 当前分类下没有任何文章
+      state.isNewArticle = 'nothing'
+    }
+  },
+  [types.NEWARTICLE] (state, article) {
+    state.currentSelectClassArticles.unshift(article)
   }
 }
 
@@ -34,7 +48,6 @@ export const actions = {
     try {
       let res = await axios.get('/api/classify')
       commit(types.UPDATECLASSIFIES, res.data)
-      console.log(res.data[0].className)
       commit(types.UPDATECURRENTSELECTCLASS, res.data[0].className)
     } catch (e) {
       console.log(e)
@@ -46,8 +59,6 @@ export const actions = {
       console.log(className)
       let res = await axios.get(`/api/articles/className/?className=${encodeURIComponent(className)}`)
       commit(types.UPDATECURRENTSELECTCLASSARTICLES, res.data)
-      console.log(res.data[0])
-      commit(types.UPDATECURRENTSELECTEDARTICLE, res.data[0])      
     } catch (e) {
       console.log(e)
     }

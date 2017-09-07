@@ -444,11 +444,15 @@ var articleList = function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return article.findAndCountAll({ where: { status: 'publish' }, limit: limit });
+            return article.findAll({
+              where: { status: 'publish' },
+              limit: limit,
+              order: [['createAt', 'DESC']]
+            });
 
           case 3:
             result = _context.sent;
-            return _context.abrupt('return', result.rows);
+            return _context.abrupt('return', result);
 
           case 7:
             _context.prev = 7;
@@ -470,7 +474,7 @@ var articleList = function () {
 }();
 
 var addArtile = function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(article) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(newArticle) {
     var result;
     return __WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
@@ -478,7 +482,7 @@ var addArtile = function () {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return article.create(article);
+            return article.create(newArticle);
 
           case 3:
             result = _context2.sent;
@@ -543,25 +547,40 @@ var findArticleByTitle = function () {
 //
 //   }
 // }
+// async function create () {
+//   try {
+//     let log = await article.create()
+//     console.log(log)
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
+/**
+ * 获取分类下所有文章
+ * @param className
+ * @returns {Promise.<Model[]>}
+ */
 
 
-var create = function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4() {
-    var log;
+var getArticlesByClassify = function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4(className) {
+    var results;
     return __WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.prev = 0;
             _context4.next = 3;
-            return article.create({ publishTime: '1112', title: 'this is fddf', desc: 'fdjfdj', markdown: 'fjjfd##jfjffj', status: 'publish' });
+            return article.findAndCount({
+              where: {
+                className: className
+              },
+              order: [['createAt', 'DESC']]
+            });
 
           case 3:
-            log = _context4.sent;
-
-            console.log(log);
-            _context4.next = 10;
-            break;
+            results = _context4.sent;
+            return _context4.abrupt('return', results.rows);
 
           case 7:
             _context4.prev = 7;
@@ -577,45 +596,47 @@ var create = function () {
     }, _callee4, this, [[0, 7]]);
   }));
 
-  return function create() {
+  return function getArticlesByClassify(_x4) {
     return _ref4.apply(this, arguments);
   };
 }();
 
-var getArticlesByClassify = function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee5(className) {
+var updateArticle = function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee5(upArticle) {
     var results;
     return __WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.prev = 0;
-            _context5.next = 3;
-            return article.findAndCount({
+
+            console.log(upArticle);
+            _context5.next = 4;
+            return article.update(upArticle, {
               where: {
-                className: className
+                id: upArticle.id
               }
             });
 
-          case 3:
+          case 4:
             results = _context5.sent;
-            return _context5.abrupt('return', results.rows);
+            return _context5.abrupt('return', results);
 
-          case 7:
-            _context5.prev = 7;
+          case 8:
+            _context5.prev = 8;
             _context5.t0 = _context5['catch'](0);
 
             console.log(_context5.t0);
 
-          case 10:
+          case 11:
           case 'end':
             return _context5.stop();
         }
       }
-    }, _callee5, this, [[0, 7]]);
+    }, _callee5, this, [[0, 8]]);
   }));
 
-  return function getArticlesByClassify(_x4) {
+  return function updateArticle(_x5) {
     return _ref5.apply(this, arguments);
   };
 }();
@@ -649,7 +670,6 @@ var article = defineModel('article', {
 }, {
   comment: 'article model save all article'
 });
-
 article.sync().catch(function (error) {
   return console.log(error);
 });
@@ -658,8 +678,8 @@ module.exports = {
   articleList: articleList,
   addArtile: addArtile,
   findArticleByTitle: findArticleByTitle,
-  create: create,
-  getArticlesByClassify: getArticlesByClassify
+  getArticlesByClassify: getArticlesByClassify,
+  updateArticle: updateArticle
 };
 
 /***/ },
@@ -886,6 +906,53 @@ articleRouter.get('/', function () {
 
   return function (_x3) {
     return _ref3.apply(this, arguments);
+  };
+}()).post('/add', function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4(ctx) {
+    return __WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            console.log(ctx.request.body);
+            _context4.next = 3;
+            return article.addArtile(ctx.request.body);
+
+          case 3:
+            ctx.body = _context4.sent;
+
+          case 4:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, _this);
+  }));
+
+  return function (_x4) {
+    return _ref4.apply(this, arguments);
+  };
+}()).post('/update', function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee5(ctx) {
+    return __WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return article.updateArticle(ctx.request.body);
+
+          case 2:
+            ctx.body = _context5.sent;
+
+          case 3:
+          case 'end':
+            return _context5.stop();
+        }
+      }
+    }, _callee5, _this);
+  }));
+
+  return function (_x5) {
+    return _ref5.apply(this, arguments);
   };
 }());
 module.exports = articleRouter;

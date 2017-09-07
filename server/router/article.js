@@ -13,4 +13,11 @@ articleRouter
   .get('/className', async (ctx) => {
     ctx.body = await article.getArticlesByClassify(ctx.query.className)
   })
+  .post('/add', async (ctx) => {
+    console.log(ctx.request.body)
+    ctx.body = await article.addArtile(ctx.request.body)
+  })
+  .post('/update', async(ctx) => {
+    ctx.body = await article.updateArticle(ctx.request.body)
+  })
 module.exports = articleRouter

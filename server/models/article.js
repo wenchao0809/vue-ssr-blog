@@ -36,16 +36,20 @@ const article = defineModel('article', {
  */
 async function articleList (limit) {
   try {
-    let result = await article.findAndCountAll({where: {status: 'publish'}, limit: limit})
-    return result.rows
+    let result = await article.findAll({
+      where: {status: 'publish'},
+      limit: limit,
+      order: [['createAt', 'DESC']]
+    })
+    return result
   } catch (e) {
     console.log(e)
   }
 }
 
-async function addArtile (article) {
+async function addArtile (newArticle) {
   try {
-    let result = await article.create(article)
+    let result = await article.create(newArticle)
     return result
   } catch (e) {
     console.log(e)
@@ -67,21 +71,26 @@ async function findArticleByTitle (title) {
 //
 //   }
 // }
-async function create () {
-  try {
-    let log = await article.create({publishTime: '1112', title: 'this is fddf', desc: 'fdjfdj', markdown:'fjjfd##jfjffj', status: 'publish'})
-    console.log(log)
-  } catch (e) {
-    console.log(e)
-  }
-}
-
+// async function create () {
+//   try {
+//     let log = await article.create()
+//     console.log(log)
+//   } catch (e) {
+//     console.log(e)
+//   }
+// }
+/**
+ * 获取分类下所有文章
+ * @param className
+ * @returns {Promise.<Model[]>}
+ */
 async function getArticlesByClassify (className) {
   try {
     let results = await article.findAndCount({
       where: {
         className: className
-      }
+      },
+      order: [['createAt', 'DESC']]
     })
     return results.rows
   } catch (e) {
@@ -89,6 +98,19 @@ async function getArticlesByClassify (className) {
   }
 }
 
+async function updateArticle (upArticle) {
+  try {
+    console.log(upArticle)
+    let results = await article.update(upArticle, {
+      where: {
+        id: upArticle.id
+      }
+    })
+    return results
+  } catch (e) {
+    console.log(e)
+  }
+}
 article.sync()
   .catch((error) => console.log(error))
 
@@ -96,6 +118,6 @@ module.exports = {
   articleList,
   addArtile,
   findArticleByTitle,
-  create,
-  getArticlesByClassify
+  getArticlesByClassify,
+  updateArticle
 }
