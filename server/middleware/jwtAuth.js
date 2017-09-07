@@ -1,6 +1,6 @@
 const jwtSecrect = require('../util/config').jwtSecret
-const needAuth = require('../util/config').needAuth
 const jwt = require('jsonwebtoken')
+const needAuth = require('../util/config').needAuth
 
 module.exports = async function (ctx, next) {
   let url = ctx.request.url
@@ -8,18 +8,21 @@ module.exports = async function (ctx, next) {
     return next()
   } else {
     let token = ctx.cookies.get('token')
-    console.log(token)
     if (!token) {
-      ctx.res.status = '401'
-    }
-    try {
-      let decodeToken = jwt.verify(token, jwtSecrect)
-      console.log(decodeToken)
-      if (decodeToken) {
-        return next()
+      ctx.throw(401, 'auth required')
+    } else {
+      try {
+        let decodeToken = jwt.verify(token, jwtSecrect)
+        console.log(decodeToken)
+        if (decodeToken.exp > Date.now() / 1000) {
+          return next()
+        } else {
+          ctx.throw(401, 'please new auth')
+        }
+      } catch (e) {
+        ctx.response.redirect('/login')
+        ctx.throw(401, 'auth required')
       }
-    } catch (e) {
-      ctx.res.status = '401'
     }
   }
 }

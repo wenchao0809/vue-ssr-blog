@@ -9,8 +9,11 @@ module.exports = {
   },
   needAuth: [
     '/api/classify/add',
+    '/api/classify',
+    '/api/articles/className/',
     '/api/classify/update',
-    '/api/article/add',
-    '/api/article/update'
+    '/api/articles/add',
+    '/api/articles/update',
+    '/admin'
   ]
 }

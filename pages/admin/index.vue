@@ -65,6 +65,7 @@
       }
     },
     layout: 'admin',
+    middleware: 'adminAuth',
     components: {
       EditPanel
     },

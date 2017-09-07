@@ -88,7 +88,7 @@ module.exports = {
     // password: 'ding912823',
     database: 'estding'
   },
-  needAuth: ['/api/classify/add', '/api/classify/update', '/api/article/add', '/api/article/update']
+  needAuth: ['/api/classify/add', '/api/classify', '/api/articles/className/', '/api/classify/update', '/api/articles/add', '/api/articles/update', '/admin']
 };
 
 /***/ },
@@ -296,9 +296,7 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#3B8070' },
-  router: {
-    middleware: 'adminAuth'
-  }
+  router: {}
 };
 
 /***/ },
@@ -314,8 +312,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var jwtSecrect = __webpack_require__(1).jwtSecret;
-var needAuth = __webpack_require__(1).needAuth;
 var jwt = __webpack_require__(6);
+var needAuth = __webpack_require__(1).needAuth;
 
 module.exports = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_project_self_vue_ssr_blog_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
@@ -336,38 +334,48 @@ module.exports = function () {
           case 5:
             token = ctx.cookies.get('token');
 
-            console.log(token);
-            if (!token) {
-              ctx.res.status = '401';
+            if (token) {
+              _context.next = 10;
+              break;
             }
-            _context.prev = 8;
+
+            ctx.throw(401, 'auth required');
+            _context.next = 24;
+            break;
+
+          case 10:
+            _context.prev = 10;
             decodeToken = jwt.verify(token, jwtSecrect);
 
             console.log(decodeToken);
 
-            if (!decodeToken) {
-              _context.next = 13;
+            if (!(decodeToken.exp > Date.now() / 1000)) {
+              _context.next = 17;
               break;
             }
 
             return _context.abrupt('return', next());
 
-          case 13:
-            _context.next = 18;
-            break;
-
-          case 15:
-            _context.prev = 15;
-            _context.t0 = _context['catch'](8);
-
-            ctx.res.status = '401';
+          case 17:
+            ctx.throw(401, 'please new auth');
 
           case 18:
+            _context.next = 24;
+            break;
+
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context['catch'](10);
+
+            ctx.response.redirect('/login');
+            ctx.throw(401, 'auth required');
+
+          case 24:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[8, 15]]);
+    }, _callee, this, [[10, 20]]);
   }));
 
   return function (_x, _x2) {

@@ -1,6 +1,8 @@
 import {cookieParse} from '../util/cookieUtil'
 
 export default function ({ isClient, isServer, route, req, res, redirect }) {
+  console.log(res.statusCode)
+  console.log('111')
   if (isServer) {
     let cookie = cookieParse(req.headers.cookie)
     if (cookie) {
