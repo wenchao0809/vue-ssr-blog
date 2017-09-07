@@ -23,6 +23,7 @@ userRouter
         // 不设置此属性客户端无法通过document.cookie获取到
         httpOnly: false
       })
+      ctx.response.redirect('/admin')
       ctx.body = '认证成功'
     } else {
       throw (new Error('用户名密码不正确'))

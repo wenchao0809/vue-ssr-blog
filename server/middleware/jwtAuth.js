@@ -9,7 +9,7 @@ module.exports = async function (ctx, next) {
   } else {
     let token = ctx.cookies.get('token')
     if (!token) {
-      ctx.throw(401, 'auth required')
+      ctx.response.redirect('/login')
     } else {
       try {
         let decodeToken = jwt.verify(token, jwtSecrect)
@@ -17,11 +17,12 @@ module.exports = async function (ctx, next) {
         if (decodeToken.exp > Date.now() / 1000) {
           return next()
         } else {
-          ctx.throw(401, 'please new auth')
+          ctx.response.redirect('/login')
         }
       } catch (e) {
         ctx.response.redirect('/login')
-        ctx.throw(401, 'auth required')
+        ctx.response.redirect('/login')
+        // ctx.throw(401, 'auth required')
       }
     }
   }
