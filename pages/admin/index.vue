@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="right-wrap">
-                <edit-panel :article="currentSelectArtilce" :isNewArticle="isNewArticle"></edit-panel>
+                <edit-panel :article="currentSelectArtilce" :isNewArticle="isNewArticle" :isDraft="isDraft"></edit-panel>
             </div>
         </div>
     </div>
@@ -65,7 +65,6 @@
       }
     },
     layout: 'admin',
-    middleware: 'adminAuth',
     components: {
       EditPanel
     },
@@ -117,7 +116,8 @@
         'currentSelectClassArticles',
         'currentSelectClass',
         'currentSelectArtilce',
-        'isNewArticle'
+        'isNewArticle',
+        'isDraft'
       ])
     },
     async mounted () {

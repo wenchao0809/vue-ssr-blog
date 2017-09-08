@@ -7,7 +7,8 @@ const {defineModel, Sequelize} = require('../util/DBUtil').db
 
 const article = defineModel('article', {
   publishTime: {
-    type: Sequelize.BIGINT
+    type: Sequelize.BIGINT,
+    allowNull: true
   },
   title: {
     type: Sequelize.STRING,
@@ -90,7 +91,7 @@ async function getArticlesByClassify (className) {
       where: {
         className: className
       },
-      order: [['createAt', 'DESC']]
+      order: [['updateAt', 'DESC']]
     })
     return results.rows
   } catch (e) {
@@ -98,9 +99,25 @@ async function getArticlesByClassify (className) {
   }
 }
 
+async function getArticlesByClassifies (classNames) {
+  let results = {}
+  console.log(classNames)
+  try {
+    for (let obj of classNames) {
+      console.log(obj.className)
+      let result = await getArticlesByClassify(obj.className)
+      if (result) {
+        results[obj.className] = result
+      }
+    }
+    return results
+  } catch (e) {
+
+  }
+}
 async function updateArticle (upArticle) {
   try {
-    console.log(upArticle)
+    upArticle.version++
     let results = await article.update(upArticle, {
       where: {
         id: upArticle.id
@@ -119,5 +136,6 @@ module.exports = {
   addArtile,
   findArticleByTitle,
   getArticlesByClassify,
-  updateArticle
+  updateArticle,
+  getArticlesByClassifies
 }

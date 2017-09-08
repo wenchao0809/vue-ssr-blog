@@ -7,7 +7,8 @@ export const state = () => {
     currentSelectClass: '',
     currentSelectClassArticles: [],
     currentSelectArtilce: {},
-    isNewArticle: false
+    isNewArticle: false,
+    isDraft: false
   }
 }
 
@@ -28,8 +29,11 @@ export const mutations = {
   [types.UPDATECURRENTSELECTEDARTICLE] (state, article) {
     state.currentSelectArtilce = article
     if (article) {
-      if (article.status === 'publish') {
+      if (article.status === 'publish' || article.status === 'draft') {
         state.isNewArticle = false
+        if (article.status === 'draft') {
+          state.isDraft = true
+        }
       } else {
         state.isNewArticle = true
       }

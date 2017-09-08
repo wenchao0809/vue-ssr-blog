@@ -20,7 +20,8 @@ marked.setOptions({
 export const state = () => {
   return {
     articles: [],
-    currentSelectedArticle: {}
+    currentSelectedArticle: {},
+    articlesByClassName: []
   }
 }
 
@@ -31,6 +32,9 @@ export const mutations = {
   },
   [types.UPDATECURRENTSELECTEDARTICLE] (state, article) {
     state.currentSelectedArticle = article
+  },
+  [types.UPDATEARTICELSBYCLASSNAME] (state, articles) {
+    state.articlesByClassName = articles
   }
 }
 
@@ -49,6 +53,15 @@ export const actions = {
     try {
       let article = await axios.get(`/api/articles/title?title=${encodeURIComponent(title)}`)
       commit('UPDATECURRENTSELECTEDARTICLE', article.data)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async getArticlesByClassNames ({commit}, classNames) {
+    try {
+      let articles = await axios.post('/api/articles/classNames', classNames)
+      console.log(articles)
+      commit('UPDATEARTICELSBYCLASSNAME', articles.data)
     } catch (e) {
       console.log(e)
     }

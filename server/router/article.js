@@ -7,7 +7,7 @@ articleRouter
   .get('/', async (ctx) => {
     ctx.body = await article.articleList(parseInt(ctx.query.limit))
   })
-  .get('/title', async(ctx) => {
+  .get('/title', async (ctx) => {
     ctx.body = await article.findArticleByTitle(ctx.query.title)
   })
   .get('/className', async (ctx) => {
@@ -17,7 +17,10 @@ articleRouter
     console.log(ctx.request.body)
     ctx.body = await article.addArtile(ctx.request.body)
   })
-  .post('/update', async(ctx) => {
+  .post('/update', async (ctx) => {
     ctx.body = await article.updateArticle(ctx.request.body)
+  })
+  .post('/classNames', async (ctx) => {
+    ctx.body = await article.getArticlesByClassifies(ctx.request.body.className)
   })
 module.exports = articleRouter
