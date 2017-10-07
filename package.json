@@ -22,7 +22,7 @@
     "marked": "^0.3.6",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.1",
-    "nuxt": "^1.0.0-rc8",
+    "nuxt": "^1.0.0-rc11",
     "sass-loader": "^6.0.6",
     "sequelize": "^4.7.5",
     "source-map-support": "^0.4.15",
