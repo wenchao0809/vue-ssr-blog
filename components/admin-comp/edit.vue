@@ -15,7 +15,7 @@
         </div>
         <div v-show="isNewArticle !== 'nothing'" class="operate-wrap">
             <button @click="publishOrUpdate">{{ publishText }}</button>
-            <button @click="saveDraft" v-if="isNewArticle">存为草稿</button>
+            <button @click="saveDraft" v-if="isNewArticle || isDraft">{{ draftText }}</button>
         </div>
     </div>
 </template>
@@ -36,12 +36,15 @@
       },
       props: {
         article: {},
-        isNewArticle: false
-
+        isNewArticle: false,
+        isDraft: false
       },
       computed: {
         publishText: function () {
           return this.isNewArticle ? '发布' : '更新'
+        },
+        draftText: function () {
+          return this.isDraft ? '发布' : '存为草稿'
         }
       },
       watch: {
@@ -51,24 +54,33 @@
       },
       methods: {
         async publishOrUpdate () {
+          let article = {...this.editArticle, ...{updateAt: Date.now(), publishTime: Date.now()}}
           if (this.isNewArticle) {
             // 新建文章
-            let article = {...this.editArticle, ...{updateAt: Date.now(), status: 'publish', publishTime: Date.now()}}
+            article.status = 'publish'
             try {
               await axios.post('/api/articles/add', article)
-              await this.$store.dispatch('classify/getArticlesByClassName', article.className)
             } catch (e) {
               console.log(e)
             }
           } else {
             // 更新原有文章
-            await axios.post('/api/articles/update', this.editArticle)
+            await axios.post('/api/articles/update', article)
           }
+          await this.$store.dispatch('classify/getArticlesByClassName', this.editArticle.className)
         },
         async saveDraft () {
-          let article = {...this.editArticle, ...{updateAt: Date.now(), status: 'draft', publishTime: Date.now()}}
+          let article = {...this.editArticle, ...{publishTime: Date.now()}}
+          // 发布草稿
           try {
-            await axios.post('/api/articles/add', article)
+            if (this.isDraft) {
+              article.status = 'publish'
+              await axios.post('/api/articles/update', article)
+            } else {
+              article.status = 'draft'
+              article.updateAt = Date.now()
+              await axios.post('/api/articles/add', article)
+            }
             await this.$store.dispatch('classify/getArticlesByClassName', article.className)
           } catch (e) {
             console.log(e)
