@@ -18,7 +18,7 @@
                 </div>
                 <div class="class-wrap">
                     <ul class="class-list">
-                        <li :class="{itemActive: item.className === currentSelectClass}" @click="selectClass(item)" class="item" v-for="item in classifies">{{ item.className }}</li>
+                        <li :class="{itemActive: item.className === currentSelectClass}" @click="selectClass(item)" class="item" v-for="(item, index) in classifies" :key="index">{{ item.className }}</li>
                     </ul>
                 </div>
                 <div class="logout-wrap">
@@ -34,7 +34,8 @@
                     <ul class="list">
                         <li @click="selectArticle(item)"
                             :class="{itemActive: item.title === currentSelectArtilce.title && item.createAt === currentSelectArtilce.createAt}"
-                            class="item" v-for="item in currentSelectClassArticles">
+                            class="item" v-for="item in currentSelectClassArticles"
+                            :key="item.id">
                             <span>{{ item.title }}</span>
                             <svg v-if="item.status === 'draft'" t="1504769992987" class="icon" viewBox="0 0 1024 1024" width="24" height="24">
                                 <path d="M953.173333 394.24C898.56 190.293333 714.24 55.466667 512 55.466667c-39.253333 0-78.506667 5.12-118.613333

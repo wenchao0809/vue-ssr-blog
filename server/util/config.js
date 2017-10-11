@@ -7,6 +7,12 @@ module.exports = {
     password: 'Blogding912*',
     database: 'estding'
   },
+  // db: {
+  //   host: 'localhost',
+  //   user: 'root',
+  //   password: 'ding912823',
+  //   database: 'estding'
+  // },
   needAuth: [
     '/api/classify/add',
     // '/api/classify',

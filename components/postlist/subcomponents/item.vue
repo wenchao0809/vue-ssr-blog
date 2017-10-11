@@ -19,7 +19,6 @@
     components: {},
     methods: {
       slectArticle () {
-        console.log(this.$store)
         this.$store.commit('articles/UPDATECURRENTSELECTEDARTICLE', this.article)
       },
       formateDate

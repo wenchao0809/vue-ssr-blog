@@ -18,6 +18,7 @@
 </script>
 
 <style lang="scss">
+
   @media (min-width: 48em) {
     .content-container-wrapper {
       padding-top: 5.25em;
