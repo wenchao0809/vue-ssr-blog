@@ -39,7 +39,6 @@
           userName: this.userName,
           pwd: this.pwd
         }).then((response) => {
-          console.log('eeee')
           this.$router.replace('/admin')
         })
       }

@@ -40,7 +40,7 @@ async function articleList (limit) {
     let result = await article.findAll({
       where: {status: 'publish'},
       limit: limit,
-      order: [['createAt', 'DESC']]
+      order: [['publishTime', 'DESC']]
     })
     return result
   } catch (e) {
