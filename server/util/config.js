@@ -4,7 +4,7 @@ module.exports = {
     host: 'localhost',
     user: 'estdingblog',
     // password: '123456',
-    password: 'Blogding912*',
+    password: 'Ding0912*',
     database: 'estding'
   },
   // db: {
