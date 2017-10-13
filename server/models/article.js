@@ -89,6 +89,7 @@ async function getArticlesByClassify (className) {
   try {
     let results = await article.findAndCount({
       where: {
+        status: 'publish',
         className: className
       },
       order: [['updateAt', 'DESC']]
@@ -104,7 +105,6 @@ async function getArticlesByClassifies (classNames) {
   console.log(classNames)
   try {
     for (let obj of classNames) {
-      console.log(obj.className)
       let result = await getArticlesByClassify(obj.className)
       if (result) {
         results[obj.className] = result
