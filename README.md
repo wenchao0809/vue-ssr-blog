@@ -1,5 +1,9 @@
 # my-blog
 
+# 预览地址
+
+[我的博客](http://www.estding.com)
+
 > Nuxt.js project
 
 ## Build Setup
