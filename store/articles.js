@@ -1,4 +1,4 @@
-import axios from '../util/http'
+import axios from 'axios'
 import * as types from '../util/types'
 
 let marked = require('marked')

@@ -1,5 +1,5 @@
 https://estding.com {
 gzip
 tls estding0@gmail.com
-proxy / localhost:3000
+proxy / localhost
 }
