@@ -1,5 +1,5 @@
 import * as types from '../util/types'
-import axios from '../util/http'
+import axios from 'http'
 
 export const state = () => {
   return {
