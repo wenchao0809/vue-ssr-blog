@@ -2,9 +2,9 @@ module.exports = {
   jwtSecret: 'estding',
   db: {
     host: 'localhost',
-    user: 'root',
+    user: 'estdingblog',
     // password: '123456',
-    password: 'ding912823',
+    password: 'Ding0912*',
     database: 'estding'
   },
   // db: {
