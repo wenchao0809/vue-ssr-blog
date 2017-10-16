@@ -23,7 +23,5 @@ module.exports = {
   loading: { color: '#3B8070' },
   router: {
   },
-  plugins: [
-    {src: './util//http'}
-  ]
+  plugins: []
 }
