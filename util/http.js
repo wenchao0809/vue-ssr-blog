@@ -1,4 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://estding.com:3000'
+if (process.SERVER_BUILD) {
+  axios.defaults.baseURL = 'http://estding.com:3000'
+}
 export default axios
