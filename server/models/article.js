@@ -89,7 +89,6 @@ async function getArticlesByClassify (className) {
   try {
     let results = await article.findAndCount({
       where: {
-        status: 'publish',
         className: className
       },
       order: [['updateAt', 'DESC']]
