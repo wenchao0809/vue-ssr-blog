@@ -83,9 +83,9 @@ module.exports = {
   jwtSecret: 'estding',
   db: {
     host: 'localhost',
-    user: 'estdingblog',
+    user: 'root',
     // password: '123456',
-    password: 'Ding0912*',
+    password: 'ding912823',
     database: 'estding'
   },
   // db: {
@@ -304,7 +304,8 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: { color: '#3B8070' },
-  router: {}
+  router: {},
+  plugins: ['~plugins/axios']
 };
 
 /***/ },
@@ -1367,7 +1368,7 @@ app.use(function (ctx) {
   });
 });
 
-app.listen(3200);
+app.listen(3000);
 console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
 
 /***/ }
