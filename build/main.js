@@ -464,7 +464,7 @@ var articleList = function () {
             return article.findAll({
               where: { status: 'publish' },
               limit: limit,
-              order: [['createAt', 'DESC']]
+              order: [['publishTime', 'DESC']]
             });
 
           case 3:
@@ -638,75 +638,73 @@ var getArticlesByClassifies = function () {
 
           case 8:
             if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-              _context5.next = 18;
+              _context5.next = 17;
               break;
             }
 
             obj = _step.value;
-
-            console.log(obj.className);
-            _context5.next = 13;
+            _context5.next = 12;
             return getArticlesByClassify(obj.className);
 
-          case 13:
+          case 12:
             result = _context5.sent;
 
             if (result) {
               results[obj.className] = result;
             }
 
-          case 15:
+          case 14:
             _iteratorNormalCompletion = true;
             _context5.next = 8;
             break;
 
-          case 18:
-            _context5.next = 24;
+          case 17:
+            _context5.next = 23;
             break;
 
-          case 20:
-            _context5.prev = 20;
+          case 19:
+            _context5.prev = 19;
             _context5.t0 = _context5['catch'](6);
             _didIteratorError = true;
             _iteratorError = _context5.t0;
 
-          case 24:
+          case 23:
+            _context5.prev = 23;
             _context5.prev = 24;
-            _context5.prev = 25;
 
             if (!_iteratorNormalCompletion && _iterator.return) {
               _iterator.return();
             }
 
-          case 27:
-            _context5.prev = 27;
+          case 26:
+            _context5.prev = 26;
 
             if (!_didIteratorError) {
-              _context5.next = 30;
+              _context5.next = 29;
               break;
             }
 
             throw _iteratorError;
 
+          case 29:
+            return _context5.finish(26);
+
           case 30:
-            return _context5.finish(27);
+            return _context5.finish(23);
 
           case 31:
-            return _context5.finish(24);
-
-          case 32:
             return _context5.abrupt('return', results);
 
-          case 35:
-            _context5.prev = 35;
+          case 34:
+            _context5.prev = 34;
             _context5.t1 = _context5['catch'](2);
 
-          case 37:
+          case 36:
           case 'end':
             return _context5.stop();
         }
       }
-    }, _callee5, this, [[2, 35], [6, 20, 24, 32], [25,, 27, 31]]);
+    }, _callee5, this, [[2, 34], [6, 19, 23, 31], [24,, 26, 30]]);
   }));
 
   return function getArticlesByClassifies(_x5) {
@@ -1369,7 +1367,7 @@ app.use(function (ctx) {
   });
 });
 
-app.listen(80);
+app.listen(3200);
 console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
 
 /***/ }
