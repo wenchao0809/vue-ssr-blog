@@ -71,7 +71,7 @@
         a {
           display: inline-block;
           img {
-            border-radius: 30px;
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
           }
         }
         .toggle-drawer {
