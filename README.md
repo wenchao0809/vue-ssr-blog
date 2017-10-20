@@ -3,7 +3,7 @@
 基于`Nuxt`实现的服务端渲染，博客系统。
 # 预览地址
 
-[我的博客](estding.com)
+[我的博客](https://estding.com)
 
 > Nuxt.js project
 
