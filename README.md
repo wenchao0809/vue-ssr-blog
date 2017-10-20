@@ -1,8 +1,9 @@
 # my-blog
 
+基于`Nuxt`实现的服务端渲染，博客系统。
 # 预览地址
 
-[我的博客](http://www.estding.com)
+[我的博客](estding.com)
 
 > Nuxt.js project
 
@@ -23,9 +24,10 @@ $ npm start
 $ npm run generate
 ```
 
-*Note: Due to a bug in yarn's engine version detection code if you are
-using a prerelease version of Node (i.e. v7.6.0-rc.1) you will need to either:
-  1. Use `npm install`
-  2. Run `yarn` with a standard release of Node and then switch back
+#### ToDo
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+* 样式优化
+* 博客下线
+* 评论系统
+
+
