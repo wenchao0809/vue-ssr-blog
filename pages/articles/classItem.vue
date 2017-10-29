@@ -5,8 +5,8 @@
         </div>
         <div class="article-items-wrap">
             <ul class="artilce-list">
-                <li class="artilce-list-item" v-for="(item, index) in articleItems" :key="`article_${index}`">
-                    <nuxt-link @click="pushArticle"  :to="{path: `/articles/${item.title}`}">
+                <li class="artilce-list-item"  @click.prevent="pushArticle(item.title)" v-for="(item, index) in articleItems" :key="`article_${index}`">
+                    <nuxt-link :to="{path: `/articles/${item.title}`}">
                         {{ item.title }}
                     </nuxt-link>
                    <span>{{ `(${formateDate(item.publishTime)})` }}</span>
@@ -28,7 +28,7 @@ export default {
   methods: {
       formateDate,
       pushArticle (title) {
-          this.getArticleByTitle(this.title)
+          this.getArticleByTitle(title)
       },
       ...mapActions('articles', ['getArticleByTitle'])
   }
