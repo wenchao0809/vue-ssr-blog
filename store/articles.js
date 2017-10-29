@@ -75,6 +75,8 @@ export const getters = {
    * @returns {*}
    */
   articlesHtml: (state) => {
-    return marked(state.currentSelectedArticle.markdown)
+    if (state.currentSelectedArticle.markdown) {
+      return marked(state.currentSelectedArticle.markdown)
+    }
   }
 }

@@ -6,7 +6,7 @@
         <div class="article-items-wrap">
             <ul class="artilce-list">
                 <li class="artilce-list-item" v-for="(item, index) in articleItems" :key="`article_${index}`">
-                    <nuxt-link  :to="{path: `/articles/${item.title}`}">
+                    <nuxt-link @click="pushArticle"  :to="{path: `/articles/${item.title}`}">
                         {{ item.title }}
                     </nuxt-link>
                    <span>{{ `(${formateDate(item.publishTime)})` }}</span>
@@ -18,6 +18,7 @@
 
 <script>
 import {formateDate} from '../../util/common'
+import {mapActions} from 'vuex'
 
 export default {
   props: {
@@ -27,8 +28,9 @@ export default {
   methods: {
       formateDate,
       pushArticle (title) {
-          this.$router.push(`/articles/${title}`)
-      }
+          this.getArticleByTitle(this.title)
+      },
+      ...mapActions('articles', ['getArticleByTitle'])
   }
 }
 </script>
